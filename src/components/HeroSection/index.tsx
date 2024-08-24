@@ -72,7 +72,7 @@ function HeroSection() {
           >
             <p className="text-center text-base text-secondary-content">
               Are you drowning in a sea of YouTube comments, struggling to make
-              sense of your audience's feedback? Say hello to{" "}
+              sense of your audience&apos;s feedback? Say hello to{" "}
               <span className="font-bold">
                 YCA - Your YouTube Comment Analyzer!
               </span>

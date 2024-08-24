@@ -21,7 +21,7 @@ function Pricing() {
 
               <div className="md:w-[55%]">
                 <p className="text-base text-center  md:text-[18px]">
-                  Choose the plan that's right for you with our clear,
+                  Choose the plan that&apos;s right for you with our clear,
                   competitive pricing. Perfect for individuals and businesses
                   alike.
                 </p>
@@ -30,8 +30,8 @@ function Pricing() {
 
             {/* Prices */}
             <motion.div className="flex flex-col lg:flex-row justify-center items-center gap-5">
-              {pricing.map((item) => (
-                <AnimatedDiv animateOption="toTop">
+              {pricing.map((item, index) => (
+                <AnimatedDiv key={index} animateOption="toTop">
                   <PriceCard details={item} />
                 </AnimatedDiv>
               ))}

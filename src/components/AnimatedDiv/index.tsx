@@ -4,9 +4,11 @@ import React, { useEffect, useRef } from "react";
 import { motion, useInView, useAnimationControls } from "framer-motion";
 
 function AnimatedDiv({
+  key,
   children,
   animateOption,
 }: {
+  key: number;
   children: JSX.Element;
   animateOption: "appear" | "toTop";
 }) {
@@ -38,10 +40,11 @@ function AnimatedDiv({
     if (isInView && animateOption === "appear") controls.start("appearAnimate");
     else if (isInView && animateOption === "toTop")
       controls.start("toTopAnimate");
-  }, [controls, isInView]);
+  }, [controls, isInView, animateOption]);
 
   return (
     <motion.div
+      key={key}
       ref={ref}
       variants={variants}
       initial={"appearInitial"}
