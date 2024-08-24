@@ -1,8 +1,8 @@
 "use client";
-import { mobileNavItems, navItems } from "@/lib";
 import Link from "next/link";
 import React from "react";
 import MobileNavButton from "../MobileNavButton";
+import { navItems } from "@/lib";
 
 function Navbar() {
   return (

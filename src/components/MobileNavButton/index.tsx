@@ -1,10 +1,10 @@
 "use client";
 
-import { mobileNavItems } from "@/lib";
 import Link from "next/link";
 import React, { useState } from "react";
 
 import { motion, useAnimationControls } from "framer-motion";
+import { mobileNavItems } from "@/lib";
 
 function MobileNavButton() {
   const [isOpen, setIsOpen] = useState(false);
