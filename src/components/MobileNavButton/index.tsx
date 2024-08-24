@@ -28,18 +28,18 @@ function MobileNavButton() {
       opacity: 1,
     },
     onOpen: {
-      opacity: [0, 0.65, 0, 0, 1],
-      x: [0, 50, 100, -50, 0],
+      opacity: [0, 0, 0, 0, 1],
+      x: [0, 50, 100, -25, 0],
       transition: {
-        duration: 0.35,
+        duration: 0.38,
         ease: "easeInOut",
       },
     },
     onClose: {
-      opacity: [0, 0.65, 0, 0, 1],
-      x: [0, -50, -100, 50, 0],
+      opacity: [0, 0, 0, 0, 1],
+      x: [0, -50, -100, 25, 0],
       transition: {
-        duration: 0.35,
+        duration: 0.38,
         ease: "easeInOut",
       },
     },
@@ -47,11 +47,11 @@ function MobileNavButton() {
 
   const handleClick = async () => {
     if (!isOpen) {
+      setIsOpen(!isOpen);
       await controls.start("onOpen");
-      setIsOpen(!isOpen);
     } else {
-      await controls.start("onClose");
       setIsOpen(!isOpen);
+      await controls.start("onClose");
     }
   };
 
