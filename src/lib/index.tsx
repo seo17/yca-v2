@@ -34,6 +34,7 @@ export const features = [
       <img
         src="/features/sentiment-analysis.svg"
         className="w-full h-full object-cover"
+        alt="Sentiment Analysis icon by Alhaliza Risma Elvariani"
       />
     ),
     reverse: false,
@@ -42,14 +43,19 @@ export const features = [
     title: "Keyword Extraction",
     description:
       "Discover the most talked-about topics and phrases in your comments. YCA’s keyword extraction tool helps you spot emerging trends, enabling you to tailor your content to audience interests.",
-    image: <img src="/features/keyword-extraction.svg" />,
+    image: (
+      <img
+        src="/features/keyword-extraction.svg"
+        alt="keyword extraction icon by Sulistiana"
+      />
+    ),
     reverse: true,
   },
   {
     title: "Detailed Reports",
     description:
       "Generate comprehensive reports that break down sentiment, keywords, and trends. Download and share these insights with your team to align your content strategy.",
-    image: <img src="/features/reports.svg" />,
+    image: <img src="/features/reports.svg" alt="reports icon by Slamlabs" />,
     reverse: false,
   },
 ];
