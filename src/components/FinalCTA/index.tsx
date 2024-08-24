@@ -56,7 +56,7 @@ function FinalCTA() {
         whileInView="show"
         className="w-full flex flex-col items-center justify-center px-5 pb-20 gap-10"
       >
-        <div className="flex flex-col items-center justify-center gap-2">
+        <div className="flex flex-col items-center justify-center sm:gap-2">
           <motion.div variants={toRightVariant} className="w-fit">
             <h1 className="text-3xl md:text-[2.625rem] lg:text-7xl font-bold text-primary-dark text-center">
               Ready to Transform Your
