@@ -29,8 +29,11 @@ function PriceCard({
           <hr className="bg-copy-lighter h-px border-0 w-full my-2" />
 
           <div className="flex flex-col w-full gap-[14px]">
-            {details.features.map((item) => (
-              <div className="flex flex-row flex-nowrap justify-start items-center gap-1">
+            {details.features.map((item, idx) => (
+              <div
+                key={idx}
+                className="flex flex-row flex-nowrap justify-start items-center gap-1"
+              >
                 <div>
                   <CircleCheck size={16} />
                 </div>
