@@ -8,7 +8,7 @@ function AnimatedDiv({
   children,
   animateOption,
 }: {
-  key: number;
+  key?: number;
   children: JSX.Element;
   animateOption: "appear" | "toTop";
 }) {

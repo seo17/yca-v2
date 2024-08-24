@@ -21,7 +21,7 @@ function FeatureItem({
           item.reverse ? "md:flex-row-reverse" : "md:flex-row"
         } flex-nowrap justify-between items-center`}
       >
-        <div className="w-[65%] flex flex-col items-center md:items-start gap-5">
+        <div className="sm:w-[75%] md:w-[65%] flex flex-col items-center md:items-start gap-5">
           <div className="flex flex-col items-center md:items-start gap-2 text-primary-dark">
             <h3 className="text-center text-2xl md:text-[42px] font-semibold ">
               {item.title}

@@ -53,7 +53,7 @@ function FinalCTA() {
       <motion.div
         variants={container}
         initial="hidden"
-        animate="show"
+        whileInView="show"
         className="w-full flex flex-col items-center justify-center px-5 pb-20 gap-10"
       >
         <div className="flex flex-col items-center justify-center gap-2">
