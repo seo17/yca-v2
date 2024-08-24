@@ -8,7 +8,7 @@ function Navbar() {
   return (
     <header className="w-full max-w-[1080px]">
       <nav className="w-full">
-        <div className="w-full  p-10">
+        <div className="w-full py-10 px-5 md:p-10">
           <div className="w-full flex flex-row justify-between items-center">
             <div>
               <p className="font-bold text-2xl text-primary-dark">YCA</p>
