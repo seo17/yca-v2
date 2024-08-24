@@ -36,7 +36,7 @@ function AnimatedDiv({
 
   useEffect(() => {
     if (isInView && animateOption === "appear") controls.start("appearAnimate");
-    else if (isInView && animateOption === "appear")
+    else if (isInView && animateOption === "toTop")
       controls.start("toTopAnimate");
   }, [controls, isInView]);
 

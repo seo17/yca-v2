@@ -23,7 +23,7 @@ function FeatureItem({
       >
         <div className="w-[65%] flex flex-col items-center md:items-start gap-5">
           <div className="flex flex-col items-center md:items-start gap-2 text-primary-dark">
-            <h3 className="text-2xl md:text-[42px] font-semibold ">
+            <h3 className="text-center text-2xl md:text-[42px] font-semibold ">
               {item.title}
             </h3>
             <p className="text-base text-center md:text-start md:text-[18px]">

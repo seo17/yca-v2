@@ -74,3 +74,39 @@ export const benefits = [
     image: "boost_viewer_engagement_image_url",
   },
 ];
+
+export const pricing = [
+  {
+    tier: "Free",
+    price: "0",
+    description: "Free forever",
+    features: [
+      "Sentiment Analysis for up to 5 videos per month",
+      "Basic Keyword Extraction",
+      "Access to Interactive Dashboards",
+      "Email Support",
+    ],
+  },
+  {
+    tier: "Basic",
+    price: "4.5",
+    description: "Billed Monthly",
+    features: [
+      "Advanced Sentiment Analysis for up to 50 videos per month",
+      "Trend Identification & Spam Detection",
+      "Detailed Reports with Download Options",
+      "Priority Email Support",
+    ],
+  },
+  {
+    tier: "Pro",
+    price: "8.5",
+    description: "Billed Monthly",
+    features: [
+      "Advanced Sentiment Analysis for up to 50 videos per month",
+      "Trend Identification & Spam Detection",
+      "Detailed Reports with Download Options",
+      "Priority Email Support",
+    ],
+  },
+];
