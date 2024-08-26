@@ -15,7 +15,7 @@ function PriceCard({
   };
 }) {
   return (
-    <div className="w-[280px] h-[480px] rounded-lg border border-border bg-foreground">
+    <div className="max-[300px]:w-full max-[300px]:h-[580px] w-[280px] h-[480px] rounded-lg border border-border bg-foreground">
       <div className="w-full h-full flex flex-col justify-between items-center p-4 text-primary-dark">
         <div className="w-full flex-flex gap-[18px]">
           <div className="w-full flex flex-col gap-1">
@@ -32,7 +32,7 @@ function PriceCard({
             {details.features.map((item, idx) => (
               <div
                 key={idx}
-                className="flex flex-row flex-nowrap justify-start items-center gap-1"
+                className="flex flex-row flex-nowrap justify-start items-center max-[300px]:gap-0 gap-1"
               >
                 <div>
                   <CircleCheck size={16} />

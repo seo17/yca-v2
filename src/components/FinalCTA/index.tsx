@@ -82,7 +82,7 @@ function FinalCTA() {
           variants={toTopVariant}
           className="w-full flex flex-row items-center justify-center"
         >
-          <Button />
+          <Button className="font-bold text-[18px]" />
         </motion.div>
       </motion.div>
     </section>
