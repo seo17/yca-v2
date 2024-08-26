@@ -11,7 +11,7 @@ export const navItems = [
   },
   {
     label: "Get Started",
-    path: "/login",
+    path: "/sign-up",
     show: true,
   },
 ];
@@ -114,5 +114,22 @@ export const pricing = [
       "Detailed Reports with Download Options",
       "Priority Email Support",
     ],
+  },
+];
+
+// Dashboard
+
+export const analysisLinks = [
+  {
+    path: "#",
+    label: "General Sentiment",
+  },
+  {
+    path: "#",
+    label: "Positive Sentiment",
+  },
+  {
+    path: "#",
+    label: "Negative Sentiment",
   },
 ];

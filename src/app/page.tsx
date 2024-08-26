@@ -7,15 +7,13 @@ import Pricing from "@/components/Pricing";
 
 export default function Home() {
   return (
-    <main>
-      <div className="bg-background w-full flex flex-col items-center">
-        <Navbar />
-        <HeroSection />
-        <Features />
-        <Pricing />
-        <FinalCTA />
-        <Footer />
-      </div>
-    </main>
+    <>
+      <Navbar />
+      <HeroSection />
+      <Features />
+      <Pricing />
+      <FinalCTA />
+      <Footer />
+    </>
   );
 }

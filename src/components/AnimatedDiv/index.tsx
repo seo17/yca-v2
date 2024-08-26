@@ -4,7 +4,6 @@ import React, { useEffect, useRef } from "react";
 import { motion, useInView, useAnimationControls } from "framer-motion";
 
 function AnimatedDiv({
-  key,
   children,
   animateOption,
 }: {
@@ -44,7 +43,6 @@ function AnimatedDiv({
 
   return (
     <motion.div
-      key={key}
       ref={ref}
       variants={variants}
       initial={"appearInitial"}
