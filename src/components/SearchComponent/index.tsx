@@ -3,7 +3,7 @@ import React from "react";
 
 function SearchComponent() {
   return (
-    <div className="bg-foreground flex flex-row items-center justify-center gap-2 rounded-2xl p-2">
+    <div className="text-copy bg-foreground flex flex-row items-center justify-center gap-2 rounded-lg p-2">
       <Search size={20} />
 
       <input
