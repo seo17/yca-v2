@@ -14,20 +14,29 @@ import {
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { Button } from "../ui/button";
+import { extractYouTubeVideoID } from "@/utils";
+import { useRouter } from "next/navigation";
+
+import toast from "react-hot-toast";
 
 function ButtonDialog() {
   const [open, setOpen] = useState(false);
+  const [url, setUrl] = useState("");
+  const router = useRouter();
 
-  const handleAddVideo = async () => {};
+  const handleAddVideo = async () => {
+    const getVideoId = await extractYouTubeVideoID(url);
+
+    if (getVideoId) router.push(`/video?id=${getVideoId}`);
+    else toast.error("Make sure url is valid");
+  };
 
   return (
     <>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger>
           <div className="font-bold  bg-primary-dark text-primary-content px-3 py-2 rounded-lg hover:bg-primary">
-            <div className="flex flex-row gap-px">
-              <Plus /> <span>Add Video</span>
-            </div>
+            Add Video
           </div>
         </DialogTrigger>
         <DialogContent>
@@ -46,9 +55,11 @@ function ButtonDialog() {
               </Label>
               <Input
                 id="link"
+                value={url}
                 placeholder="https://www.youtube.com/..."
                 className="col-span-3"
                 type="url"
+                onChange={(e) => setUrl(e.target.value)}
               />
             </div>
           </div>
