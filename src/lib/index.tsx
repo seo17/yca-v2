@@ -122,14 +122,14 @@ export const pricing = [
 export const analysisLinks = [
   {
     path: "#",
-    label: "General Sentiment",
+    label: "General",
   },
   {
     path: "#",
-    label: "Positive Sentiment",
+    label: "Positive",
   },
   {
     path: "#",
-    label: "Negative Sentiment",
+    label: "Negative",
   },
 ];

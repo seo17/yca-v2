@@ -2,22 +2,32 @@ import { analysisLinks } from "@/lib";
 import Link from "next/link";
 import React from "react";
 
-function VideoCard() {
+function VideoCard({
+  title,
+  userId,
+  videoId,
+}: {
+  title: string;
+  userId: string;
+  videoId: string;
+}) {
   return (
-    <div className="rounded-xl bg-foreground border border-border p-3 flex flex-col gap-5">
-      <h5 className="w-fit text-xl font-semibold text-copy">Default Title</h5>
-      <ul className="w-fit flex flex-row flex-wrap items-center justify-center gap-2 list-inside">
+    <div className="rounded-xl bg-foreground border border-border p-3 flex flex-col gap-5 justify-between items-center sm:items-start w-full h-[200px]">
+      <h5 className="w-fit text-xl font-semibold text-center sm:text-start text-copy">
+        {title}
+      </h5>
+      <div className="w-full flex flex-row justify-center sm:justify-start gap-2">
         {analysisLinks.map((item, index) => (
-          <li key={index}>
+          <div key={index}>
             <Link
               className="text-copy-light text-[14px] underline hover:text-primary-dark"
-              href={item.path}
+              href={`/video?id=${videoId}&title=${title}`}
             >
               {item.label}
             </Link>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

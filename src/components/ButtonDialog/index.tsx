@@ -28,13 +28,15 @@ function ButtonDialog() {
 
   const handleAddVideo = async () => {
     console.log("started adding");
-    const getVideoId = await extractYouTubeVideoID(url);
+    setIsLoading(true);
+    const getVideoId = extractYouTubeVideoID(url);
     const title = await getTitle(getVideoId);
+
+    console.log(title);
 
     if (getVideoId) router.push(`/video?id=${getVideoId}&title=${title}`);
     else toast.error("Make sure url is valid");
-
-    console.log("done");
+    setIsLoading(false);
   };
 
   return (
@@ -70,8 +72,13 @@ function ButtonDialog() {
             </div>
           </div>
           <DialogFooter>
-            <Button onClick={handleAddVideo} type="submit">
-              Add
+            <Button
+              onClick={handleAddVideo}
+              type="submit"
+              disabled={isLoading}
+              className={`${isLoading ? "disabled:bg-copy/25" : ""}`}
+            >
+              {isLoading ? "Adding" : "Add"}
             </Button>
           </DialogFooter>
         </DialogContent>

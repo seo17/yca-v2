@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const todoSchema = new mongoose.Schema(
+const videoSchema = new mongoose.Schema(
   {
     userId: {
       type: String,
@@ -23,7 +23,7 @@ const todoSchema = new mongoose.Schema(
   }
 );
 
-// Creating a mongoose model for the todo document
-const Video = mongoose.models?.Video || mongoose.model("Video", todoSchema);
+// Creating a mongoose model for the video document
+const Video = mongoose.models?.Video || mongoose.model("Video", videoSchema);
 
 export default Video;

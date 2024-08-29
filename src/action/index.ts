@@ -9,6 +9,17 @@ const apiGeneralEndpoint = "http://comment-insights.onrender.com/result/";
 const apiPositiveEndpoint = "http://comment-insights.onrender.com/positive/";
 const apiNegativeEndpoint = "http://comment-insights.onrender.com/positive/";
 
+type VideoInfo = {
+  userId: string;
+  videoId: string;
+  title: string;
+  sentiment: {
+    general: string;
+    positive: string;
+    negative: string;
+  };
+};
+
 export async function getTitle(videoId: string) {
   const apiTitleEndpoint = "http://comment-insights.onrender.com/title/";
 
@@ -23,15 +34,35 @@ export async function getTitle(videoId: string) {
     });
     const result = await response.json();
 
-    console.log("title", result);
-
     return result?.result || "Title Not Found";
   } catch (error) {
     console.error("Error", error);
   }
 }
 
-export async function getGeneralSentiment(userId: string, videoId: string) {
+export async function getSentiment(userId: string, videoId: string) {
+  try {
+    let result = await Promise.all([
+      getGeneralSentiment(userId, videoId),
+      getPositiveSentiment(userId, videoId),
+      getNegativeSentiment(userId, videoId),
+    ]);
+
+    console.log("results", result);
+
+    return {
+      sentiment: {
+        general: result[0] as string,
+        positive: result[1] as string,
+        negative: result[2] as string,
+      },
+    };
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function getGeneralSentiment(userId: string, videoId: string) {
   // General Sentiment
   try {
     const response = await fetch(apiGeneralEndpoint, {
@@ -44,15 +75,13 @@ export async function getGeneralSentiment(userId: string, videoId: string) {
     });
     const generalResult = await response.json();
 
-    console.log("General result", generalResult);
-
     return generalResult?.result;
   } catch (error) {
     console.error("Error", error);
   }
 }
 
-export async function getPositiveSentiment(userId: string, videoId: string) {
+async function getPositiveSentiment(userId: string, videoId: string) {
   // Positive Sentiment
   try {
     const response = await fetch(apiPositiveEndpoint, {
@@ -63,17 +92,15 @@ export async function getPositiveSentiment(userId: string, videoId: string) {
       },
       body: JSON.stringify({ text: videoId }),
     });
-    const generalResult = await response.json();
+    const positiveResult = await response.json();
 
-    console.log("General result", generalResult);
-
-    return generalResult?.result;
+    return positiveResult?.result;
   } catch (error) {
     console.error("Error", error);
   }
 }
 
-export async function getNegativeSentiment(userId: string, videoId: string) {
+async function getNegativeSentiment(userId: string, videoId: string) {
   const apiNegativeEndpoint = "http://comment-insights.onrender.com/result/";
 
   // Negative Sentiment
@@ -86,61 +113,52 @@ export async function getNegativeSentiment(userId: string, videoId: string) {
       },
       body: JSON.stringify({ text: videoId }),
     });
-    const generalResult = await response.json();
+    const negativeResult = await response.json();
 
-    console.log("General result", generalResult);
-
-    return generalResult?.result;
+    return negativeResult?.result;
   } catch (error) {
     console.error("Error", error);
   }
 }
 
-// export async function storeVideo(userId: string, videoId: string) {
-//   const title = await getTitle(videoId);
+export async function storeVideo(docObj: VideoInfo) {
+  await connectToMongoDB();
 
-//   await connectToMongoDB();
+  try {
+    const newVideo = await Video.create(docObj);
 
-//   try {
-//     const newVideo = await Video.create({
-//       userId,
-//       videoId,
-//       title,
-//     });
+    newVideo.save();
 
-//     newVideo.save();
+    // return { message: "success", videoId, title, sentiment };
+    console.log("Created", newVideo);
+    return newVideo;
+  } catch (error) {
+    console.log(error);
+    return { error: "Error creating video" };
+  }
+}
 
-//     // return { message: "success", videoId, title, sentiment };
-//     console.log(newVideo);
-//     return newVideo;
-//   } catch (error) {
-//     console.log(error);
-//     return { error: "Error creating video" };
-//   }
-// }
+export async function getVideoDetails(userId: string, videoId: string) {
+  try {
+    await connectToMongoDB();
+    const details = await Video.findOne({ videoId, userId });
 
-// export async function getVideoDetails(userId: string, videoId: string) {
-//   try {
-//     await connectToMongoDB();
-//     const details = await Video.findOne({ videoId, userId });
+    if (details) return details.toObject();
+    else return { message: "no such video found on this account" };
+  } catch (error) {
+    console.log(error);
+    return { error: "Error fetching all videos" };
+  }
+}
 
-//     console.log(details);
+export async function getAllVideos(userId: string) {
+  try {
+    await connectToMongoDB();
+    const videos = await Video.find({ userId });
 
-//     return details;
-//   } catch (error) {
-//     console.log(error);
-//     return { error: "Error fetching all videos" };
-//   }
-// }
-
-// export async function getAllVideos(userId: string) {
-//   try {
-//     await connectToMongoDB();
-//     const videos = await Video.find({ userId });
-
-//     return { videos };
-//   } catch (error) {
-//     console.log(error);
-//     return { error: "Error fetching all videos" };
-//   }
-// }
+    return { videos };
+  } catch (error) {
+    console.log(error);
+    return { error: "Error fetching all videos" };
+  }
+}
