@@ -32,7 +32,10 @@ function ButtonDialog() {
     const title = await getTitle(getVideoId);
 
     if (getVideoId) router.push(`/video?id=${getVideoId}&title=${title}`);
-    else toast.error("Make sure url is valid");
+    else {
+      toast.error("Make sure url is valid");
+      setIsLoading(false);
+    }
   };
 
   return (
