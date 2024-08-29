@@ -143,7 +143,7 @@ export async function getVideoDetails(userId: string, videoId: string) {
     await connectToMongoDB();
     const details = await Video.findOne({ videoId, userId });
 
-    if (details) return details.toObject();
+    if (details) return JSON.parse(JSON.stringify(details));
     else return { message: "no such video found on this account" };
   } catch (error) {
     console.log(error);
@@ -156,7 +156,10 @@ export async function getAllVideos(userId: string) {
     await connectToMongoDB();
     const videos = await Video.find({ userId });
 
-    return { videos };
+    // Convert each Mongoose document to a plain JavaScript object
+    const plainVideos = videos.map((video) => video.toObject());
+
+    return JSON.parse(JSON.stringify({ videos: plainVideos }));
   } catch (error) {
     console.log(error);
     return { error: "Error fetching all videos" };

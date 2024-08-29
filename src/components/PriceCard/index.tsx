@@ -2,7 +2,7 @@
 
 import { CircleCheck } from "lucide-react";
 import React from "react";
-import Button from "../Button";
+import Button from "../CustomButton";
 
 function PriceCard({
   details,
@@ -46,6 +46,7 @@ function PriceCard({
         <Button
           className="w-full"
           styleOption={details.tier !== "Basic" ? "border" : "default"}
+          prompt="Coming Soon"
         />
       </div>
     </div>

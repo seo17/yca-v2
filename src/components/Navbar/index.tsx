@@ -14,7 +14,7 @@ function Navbar() {
               <p className="font-bold text-2xl text-primary-dark">YCA</p>
             </div>
 
-            <div className="hidden md:flex flex-row items-center gap-5 text-base text-copy">
+            {/* <div className="hidden md:flex flex-row items-center gap-5 text-base text-copy">
               {navItems.map((item, index) =>
                 item.label !== "Get Started" ? (
                   <Link
@@ -34,7 +34,7 @@ function Navbar() {
                   </Link>
                 )
               )}
-            </div>
+            </div> */}
 
             {/* Smaller Screen Nav Option */}
             <MobileNavButton />

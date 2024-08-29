@@ -32,11 +32,8 @@ function ButtonDialog() {
     const getVideoId = extractYouTubeVideoID(url);
     const title = await getTitle(getVideoId);
 
-    console.log(title);
-
     if (getVideoId) router.push(`/video?id=${getVideoId}&title=${title}`);
     else toast.error("Make sure url is valid");
-    setIsLoading(false);
   };
 
   return (

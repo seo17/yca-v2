@@ -1,12 +1,20 @@
+"use client";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 function Button({
+  prompt,
   className,
   styleOption,
+  onClick,
 }: {
+  prompt?: string;
   className?: string;
   styleOption?: "default" | "border";
+  onClick?: () => void;
 }) {
+  const router = useRouter();
+
   const styleOptions = {
     default: "bg-primary-dark text-foreground hover:bg-primary",
     border:
@@ -15,11 +23,16 @@ function Button({
 
   const style = styleOption ? styleOptions[styleOption] : styleOptions.default;
 
+  const defaultHandleClick = () => {
+    router.push("/sign-up");
+  };
+
   return (
     <button
+      onClick={onClick || defaultHandleClick}
       className={`${className} py-3 px-10 text-[14px]  rounded-lg ${style}`}
     >
-      Get Started
+      {prompt || "Get Started"}
     </button>
   );
 }

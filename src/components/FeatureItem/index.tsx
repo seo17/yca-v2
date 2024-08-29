@@ -1,11 +1,10 @@
+"use client";
 import React from "react";
-import Button from "../Button";
+import Button from "../CustomButton";
 
 function FeatureItem({
-  key,
   item,
 }: {
-  key: number;
   item: {
     title: string;
     description: string;
@@ -16,7 +15,6 @@ function FeatureItem({
   return (
     <article>
       <div
-        key={key}
         className={`flex flex-col-reverse ${
           item.reverse ? "md:flex-row-reverse" : "md:flex-row"
         } flex-nowrap justify-between items-center`}

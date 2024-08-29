@@ -9,12 +9,12 @@ import AnimatedDiv from "../AnimatedDiv";
 
 function Pricing() {
   return (
-    <section id={"Pricing"}>
+    <section id={"pricing"}>
       <div className="w-full pb-40">
         <div className="flex flex-col">
           <div className="max-w-[1080px] flex flex-col items-center justify-start  gap-10 px-5 md:px-7 lg:px-10">
             {/* Pricing Header */}
-            <div className="text-primary flex flex-col items-center gap-3">
+            <div className="text-primary-dark flex flex-col items-center gap-3">
               <AnimatedDiv animateOption="toTop">
                 <h3 className="text-2xl md:text-[42px] font-semibold ">
                   Pricing

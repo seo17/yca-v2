@@ -1,12 +1,12 @@
 export const navItems = [
   {
     label: "Features",
-    path: "/features",
+    path: "#features",
     show: true,
   },
   {
     label: "Pricing",
-    path: "/pricing",
+    path: "#pricing",
     show: true,
   },
   {
@@ -20,6 +20,11 @@ export const mobileNavItems = [
   {
     label: "Home",
     path: "/",
+    show: true,
+  },
+  {
+    label: "Dashboard",
+    path: "/dashboard",
     show: true,
   },
   ...navItems,

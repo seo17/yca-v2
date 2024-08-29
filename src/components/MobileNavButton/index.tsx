@@ -56,7 +56,7 @@ function MobileNavButton() {
   };
 
   return (
-    <div className="relative md:hidden">
+    <div className="relative">
       <button
         onClick={handleClick}
         className="font-bold py-2 px-4 bg-primary-dark text-foreground rounded-lg active:bg-primary"
@@ -73,7 +73,7 @@ function MobileNavButton() {
         variants={menuVariants}
         initial={"initial"}
         animate={controls}
-        className="absolute bg-primary-dark rounded-lg w-[220px] -bottom-[190px] right-3"
+        className="absolute bg-primary-dark rounded-lg w-[220px] bottom-[-230px] right-3"
       >
         <div className="flex flex-col justify-start p-4 gap-4">
           {mobileNavItems.map((item, index) => (
