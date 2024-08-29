@@ -19,8 +19,6 @@ function DashboardContent({ userId }: { userId: string }) {
     getVideos();
     setIsLoading(false);
   }, []);
-
-  console.log("Dashboard Loading", isLoading);
   return (
     <main>
       <div className="px-5 md:px-7 lg:px-10">

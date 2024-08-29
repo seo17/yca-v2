@@ -27,7 +27,6 @@ function ButtonDialog() {
   const router = useRouter();
 
   const handleAddVideo = async () => {
-    console.log("started adding");
     setIsLoading(true);
     const getVideoId = extractYouTubeVideoID(url);
     const title = await getTitle(getVideoId);

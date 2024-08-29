@@ -48,8 +48,6 @@ export async function getSentiment(userId: string, videoId: string) {
       getNegativeSentiment(userId, videoId),
     ]);
 
-    console.log("results", result);
-
     return {
       sentiment: {
         general: result[0] as string,
@@ -129,8 +127,6 @@ export async function storeVideo(docObj: VideoInfo) {
 
     newVideo.save();
 
-    // return { message: "success", videoId, title, sentiment };
-    console.log("Created", newVideo);
     return newVideo;
   } catch (error) {
     console.log(error);

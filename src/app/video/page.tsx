@@ -17,7 +17,6 @@ async function VideoPage({
   const resultFromDb = await getVideoDetails(userId as string, videoId);
 
   if (resultFromDb?.message) {
-    console.log("I'm here");
     const result = await getSentiment(userId as string, videoId);
 
     sentiment = result?.sentiment;
