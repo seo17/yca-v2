@@ -18,17 +18,23 @@ import { extractYouTubeVideoID } from "@/utils";
 import { useRouter } from "next/navigation";
 
 import toast from "react-hot-toast";
+import { getTitle } from "@/action";
 
 function ButtonDialog() {
+  const [isLoading, setIsLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [url, setUrl] = useState("");
   const router = useRouter();
 
   const handleAddVideo = async () => {
+    console.log("started adding");
     const getVideoId = await extractYouTubeVideoID(url);
+    const title = await getTitle(getVideoId);
 
-    if (getVideoId) router.push(`/video?id=${getVideoId}`);
+    if (getVideoId) router.push(`/video?id=${getVideoId}&title=${title}`);
     else toast.error("Make sure url is valid");
+
+    console.log("done");
   };
 
   return (
