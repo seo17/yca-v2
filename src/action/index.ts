@@ -146,7 +146,7 @@ export async function storeVideo(docObj: VideoInfo) {
     const result = await Video.findOne({ title, userId, videoId });
 
     if (result) {
-      return;
+      return { statusCode: 403, message: "Alread exists" };
     }
 
     // Store video if it does not exist
@@ -154,10 +154,10 @@ export async function storeVideo(docObj: VideoInfo) {
 
     newVideo.save();
 
-    return newVideo;
+    return { statusCode: 201, message: "created successfully" };
   } catch (error) {
     console.log(error);
-    return { error: "Error creating video" };
+    return { statusCode: 500, error: "Error creating video" };
   }
 }
 
