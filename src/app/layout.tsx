@@ -24,7 +24,7 @@ export default function RootLayout({
       <html lang="en">
         <body className={poppins.className}>
           <main>
-            <div className="bg-foreground  w-full h-screen flex flex-col items-center">
+            <div className="bg-foreground  w-full flex flex-col items-center">
               {children}
               <Toaster />
             </div>

@@ -82,10 +82,10 @@ function HeroSection() {
 
         <motion.div
           variants={toTopVariant}
-          className=" rounded-2xl w-full sm:w-[75%] md:w-[80%] lg:w-[800px] lg:h-[486px]"
+          className=" border-8 border-border rounded-2xl w-full sm:w-[75%] md:w-[80%] lg:w-[800px] lg:h-[486px]"
         >
           <img
-            className="object-cover w-full h-full rounded-2xl"
+            className="object-contain w-full h-full rounded-2xl"
             src="/demo.png"
             alt="YCA demo image"
           />

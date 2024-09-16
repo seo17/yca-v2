@@ -4,6 +4,7 @@ import VideoCard from "../VideoCard";
 import { getAllVideos } from "@/action";
 
 import { ThreeDots } from "react-loader-spinner";
+import ButtonDialog from "../ButtonDialog";
 
 function DashboardContent({ userId }: { userId: string }) {
   const [videoArray, setVideoArray] = useState<any[]>([]);
@@ -52,10 +53,11 @@ function DashboardContent({ userId }: { userId: string }) {
             ))}
           </div>
         ) : (
-          <div className="w-full flex flex-col justify-center items-center gap-3">
+          <div className="w-full h-[78vh] flex flex-col justify-center items-center gap-3">
             <p className="text-center text-base text-secondary-content">
               Add a YouTube video link to get started
             </p>
+            <ButtonDialog />
           </div>
         )}
       </div>
