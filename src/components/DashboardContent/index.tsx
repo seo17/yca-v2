@@ -41,16 +41,18 @@ function DashboardContent({ userId }: { userId: string }) {
             />
           </div>
         ) : videoArray && videoArray.length > 0 ? (
-          <div className="my-3 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 grid-flow-cols">
-            {videoArray.map((item, index) => (
-              <VideoCard
-                key={index}
-                title={item?.title}
-                userId={item?.userId}
-                videoId={item?.videoId}
-                thumbnail={item?.thumbnail}
-              />
-            ))}
+          <div className="w-full">
+            <div className="my-3 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 grid-flow-cols">
+              {videoArray.map((item, index) => (
+                <VideoCard
+                  key={index}
+                  title={item?.title}
+                  userId={item?.userId}
+                  videoId={item?.videoId}
+                  thumbnail={item?.thumbnail}
+                />
+              ))}
+            </div>
           </div>
         ) : (
           <div className="w-full h-[78vh] flex flex-col justify-center items-center gap-3">

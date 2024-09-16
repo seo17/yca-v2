@@ -8,7 +8,7 @@ async function DashboardPage() {
   const user = await currentUser();
 
   return (
-    <div>
+    <div className="w-full h-screen">
       <DashboardTopNav />
       <DashboardContent userId={user?.id as string} />
     </div>
