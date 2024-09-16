@@ -139,8 +139,17 @@ export async function getThumbnail(videoId: string) {
 // MongoDB Actions
 export async function storeVideo(docObj: VideoInfo) {
   await connectToMongoDB();
+  const { title, videoId, userId } = docObj;
 
   try {
+    // Check if video already exists
+    const result = await Video.findOne({ title, userId, videoId });
+
+    if (result) {
+      return;
+    }
+
+    // Store video if it does not exist
     const newVideo = await Video.create(docObj);
 
     newVideo.save();
@@ -158,10 +167,10 @@ export async function getVideoDetails(userId: string, videoId: string) {
     const details = await Video.findOne({ videoId, userId });
 
     if (details) return JSON.parse(JSON.stringify(details));
-    else return { message: "no such video found on this account" };
+    else return { notFound: true };
   } catch (error) {
-    console.log(error);
-    return { error: "Error fetching all videos" };
+    if (error instanceof Error) return { error: error?.message };
+    else console.log("Error getting video details", error);
   }
 }
 

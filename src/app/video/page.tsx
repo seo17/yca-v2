@@ -14,20 +14,26 @@ async function VideoPage({
 }: {
   searchParams: { id: string; title: string; selectedSentiment?: string };
 }) {
+  // Get video id, title and sentiment option (optional) from route search params
   const { id: videoId, title, selectedSentiment } = searchParams;
   const { userId } = auth();
 
+  // Initialize variable to store sentiment from db or api
   let sentiment;
 
+  // Search for video detail on db
   const resultFromDb = await getVideoDetails(userId as string, videoId);
 
-  if (resultFromDb?.message) {
+  // If video is not found on db, get sentiment, thumbnail and other from api
+  // then save to db
+  if (resultFromDb?.notFound) {
     const result = await getSentiment(videoId);
     const thumbnail = await getThumbnail(videoId);
 
+    // Declare value of initialized sentiment to api result
     sentiment = result?.sentiment;
 
-    if (sentiment)
+    if (sentiment && thumbnail)
       storeVideo({
         userId: userId as string,
         videoId,
@@ -36,6 +42,7 @@ async function VideoPage({
         sentiment: sentiment,
       });
   } else {
+    // Declare value of initialized sentiment to db result
     sentiment = resultFromDb?.sentiment;
   }
 
