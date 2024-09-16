@@ -10,8 +10,10 @@ function Navbar() {
       <nav className="w-full">
         <div className="w-full py-10 px-5 md:p-10">
           <div className="w-full flex flex-row justify-between items-center">
-            <div>
-              <p className="font-bold text-2xl text-primary-dark">YCA</p>
+            <div className="cursor-pointer">
+              <Link href={"/"}>
+                <p className="font-bold text-2xl text-primary-dark">YCA</p>
+              </Link>
             </div>
 
             {/* <div className="hidden md:flex flex-row items-center gap-5 text-base text-copy">
