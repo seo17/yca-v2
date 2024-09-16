@@ -8,11 +8,14 @@ const apiKey = process.env.API_KEY!;
 const apiGeneralEndpoint = "http://comment-insights.onrender.com/result/";
 const apiPositiveEndpoint = "http://comment-insights.onrender.com/positive/";
 const apiNegativeEndpoint = "http://comment-insights.onrender.com/positive/";
+const apiTitleEndpoint = "http://comment-insights.onrender.com/title/";
+const apiThumbnailEndpoint = "http://comment-insights.onrender.com/thumbnail/";
 
 type VideoInfo = {
   userId: string;
   videoId: string;
   title: string;
+  thumbnail: string;
   sentiment: {
     general: string;
     positive: string;
@@ -21,8 +24,6 @@ type VideoInfo = {
 };
 
 export async function getTitle(videoId: string) {
-  const apiTitleEndpoint = "http://comment-insights.onrender.com/title/";
-
   try {
     const response = await fetch(apiTitleEndpoint, {
       method: "POST",
@@ -40,12 +41,12 @@ export async function getTitle(videoId: string) {
   }
 }
 
-export async function getSentiment(userId: string, videoId: string) {
+export async function getSentiment(videoId: string) {
   try {
     let result = await Promise.all([
-      getGeneralSentiment(userId, videoId),
-      getPositiveSentiment(userId, videoId),
-      getNegativeSentiment(userId, videoId),
+      getGeneralSentiment(videoId),
+      getPositiveSentiment(videoId),
+      getNegativeSentiment(videoId),
     ]);
 
     return {
@@ -60,7 +61,7 @@ export async function getSentiment(userId: string, videoId: string) {
   }
 }
 
-async function getGeneralSentiment(userId: string, videoId: string) {
+async function getGeneralSentiment(videoId: string) {
   // General Sentiment
   try {
     const response = await fetch(apiGeneralEndpoint, {
@@ -79,7 +80,7 @@ async function getGeneralSentiment(userId: string, videoId: string) {
   }
 }
 
-async function getPositiveSentiment(userId: string, videoId: string) {
+async function getPositiveSentiment(videoId: string) {
   // Positive Sentiment
   try {
     const response = await fetch(apiPositiveEndpoint, {
@@ -98,9 +99,7 @@ async function getPositiveSentiment(userId: string, videoId: string) {
   }
 }
 
-async function getNegativeSentiment(userId: string, videoId: string) {
-  const apiNegativeEndpoint = "http://comment-insights.onrender.com/result/";
-
+async function getNegativeSentiment(videoId: string) {
   // Negative Sentiment
   try {
     const response = await fetch(apiNegativeEndpoint, {
@@ -119,6 +118,25 @@ async function getNegativeSentiment(userId: string, videoId: string) {
   }
 }
 
+export async function getThumbnail(videoId: string) {
+  try {
+    const response = await fetch(apiThumbnailEndpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        access_token: apiKey,
+      },
+      body: JSON.stringify({ text: videoId }),
+    });
+    const result = await response.json();
+
+    return result?.result;
+  } catch (error) {
+    console.error("Error", error);
+  }
+}
+
+// MongoDB Actions
 export async function storeVideo(docObj: VideoInfo) {
   await connectToMongoDB();
 

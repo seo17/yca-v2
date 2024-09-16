@@ -6,10 +6,12 @@ import Markdown from "react-markdown";
 
 function ResultComponent({
   sentiment,
+  selectedSentiment,
 }: {
   sentiment: { general: string; positive: string; negative: string };
+  selectedSentiment?: string;
 }) {
-  const [tabValue, setTabValue] = useState("general");
+  const [tabValue, setTabValue] = useState(selectedSentiment || "general");
 
   return (
     <Tabs

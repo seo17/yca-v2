@@ -2,14 +2,19 @@ import ResultComponent from "@/components/ResultComponent";
 import React from "react";
 
 import { auth } from "@clerk/nextjs/server";
-import { getSentiment, getVideoDetails, storeVideo } from "@/action";
+import {
+  getSentiment,
+  getThumbnail,
+  getVideoDetails,
+  storeVideo,
+} from "@/action";
 
 async function VideoPage({
   searchParams,
 }: {
-  searchParams: { id: string; title: string };
+  searchParams: { id: string; title: string; selectedSentiment?: string };
 }) {
-  const { id: videoId, title } = searchParams;
+  const { id: videoId, title, selectedSentiment } = searchParams;
   const { userId } = auth();
 
   let sentiment;
@@ -17,7 +22,8 @@ async function VideoPage({
   const resultFromDb = await getVideoDetails(userId as string, videoId);
 
   if (resultFromDb?.message) {
-    const result = await getSentiment(userId as string, videoId);
+    const result = await getSentiment(videoId);
+    const thumbnail = await getThumbnail(videoId);
 
     sentiment = result?.sentiment;
 
@@ -26,6 +32,7 @@ async function VideoPage({
         userId: userId as string,
         videoId,
         title,
+        thumbnail,
         sentiment: sentiment,
       });
   } else {
@@ -40,7 +47,10 @@ async function VideoPage({
             {`${title}`}
           </h1>
           <div className="w-full">
-            <ResultComponent sentiment={sentiment} />
+            <ResultComponent
+              sentiment={sentiment}
+              selectedSentiment={selectedSentiment}
+            />
           </div>
         </div>
       </div>
