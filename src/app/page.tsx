@@ -7,13 +7,12 @@ import Navbar from "@/components/Navbar";
 import Pricing from "@/components/Pricing";
 
 export default function Home() {
-
   return (
     <>
       <Navbar />
       <HeroSection />
       <Features />
-      <Pricing />
+      {/* <Pricing /> */}
       <FinalCTA />
       <Footer />
     </>
