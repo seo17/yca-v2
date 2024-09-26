@@ -8,6 +8,7 @@ import {
   getVideoDetails,
   storeVideo,
 } from "@/action";
+import VideoComponent from "@/components/VideoComponent";
 
 async function VideoPage({
   searchParams,
@@ -50,6 +51,7 @@ async function VideoPage({
     <main className="text-copy">
       <div className="py-10 px-5 md:px-7 lg:px-10">
         <div className="max-w-[1080px] flex flex-col items-center gap-5">
+          <VideoComponent videoId={videoId} />
           <h1 className="text-center text-xl md:text-3xl lg:text-4xl font-bold text-copy">
             {`${title}`}
           </h1>

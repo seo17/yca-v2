@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={poppins.className}>
+        <body className={`${poppins.className} bg-foreground`}>
           <main>
             <div className="bg-foreground  w-full flex flex-col items-center">
               {children}

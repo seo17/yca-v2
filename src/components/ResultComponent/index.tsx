@@ -29,21 +29,21 @@ function ResultComponent({
       </div>
       <TabsContent value="general">
         <div className="w-full flex flex-row justify-center text-justify">
-          <div className="">
+          <div className="sm:px-14 md:px-24 lg:px-36">
             <Markdown>{sentiment?.general}</Markdown>
           </div>
         </div>
       </TabsContent>
       <TabsContent value="positive">
         <div className="w-full flex flex-row justify-center text-justify">
-          <div className="">
+          <div className="sm:px-14 md:px-24 lg:px-36">
             <Markdown>{sentiment?.positive}</Markdown>
           </div>
         </div>
       </TabsContent>
       <TabsContent value="negative">
         <div className="w-full flex flex-row justify-center text-justify">
-          <div className="">
+          <div className="sm:px-14 md:px-24 lg:px-36">
             <Markdown>{sentiment?.negative}</Markdown>
           </div>
         </div>
