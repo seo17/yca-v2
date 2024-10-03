@@ -1,7 +1,5 @@
 "use server";
 
-export const runtime = "edge";
-
 import { connectToMongoDB } from "@/db";
 import Video from "@/model";
 
