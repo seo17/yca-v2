@@ -10,6 +10,8 @@ import {
 } from "@/action";
 import VideoComponent from "@/components/VideoComponent";
 
+export const runtime = "edge";
+
 async function VideoPage({
   searchParams,
 }: {

@@ -4,6 +4,8 @@ import React from "react";
 
 import { currentUser, auth } from "@clerk/nextjs/server";
 
+export const runtime = "edge";
+
 async function DashboardPage() {
   const user = await currentUser();
 
